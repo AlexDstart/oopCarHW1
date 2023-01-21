@@ -1,4 +1,3 @@
-import java.util.IllegalFormatCodePointException;
 import java.util.Objects;
 
 public class Car {
@@ -10,12 +9,12 @@ public class Car {
     private String country;
 
     public Car(String brand, String model, double engineVolume, String color, int year, String country) {
-        this.brand = brand == null ? "default" : brand;
-        this.model = model == null || model.isEmpty() ? "default" : model;
-        this.engineVolume = engineVolume > 0 ? engineVolume : 1.5;
-        this.color = color == null || color.isEmpty() ? "white" : color;
-        this.year = year > 0 ? year : 2000;
-        this.country = country == null || country.isEmpty() ? "default" : country;
+        setBrand(brand);
+        setModel(model);
+        setEngineVolume(engineVolume);
+        setColor(color);
+        setYear(year);
+        setCountry(country);
     }
 
     public String getBrand() {
@@ -23,7 +22,8 @@ public class Car {
     }
 
     public void setBrand(String brand) {
-        this.brand = brand;
+
+        this.brand = brand == null ? "default" : brand;
     }
 
     public String getModel() {
@@ -31,15 +31,15 @@ public class Car {
     }
 
     public void setModel(String model) {
-        this.model = model;
+        this.model = model == null || model.isEmpty() ? "default" : model;
     }
 
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public void setEngineVolume(int engineVolume) {
-        this.engineVolume = engineVolume;
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume > 0 ? engineVolume : 1.5;
     }
 
     public String getColor() {
@@ -47,7 +47,7 @@ public class Car {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = color == null || color.isEmpty() ? "white" : color;
     }
 
     public int getYear() {
@@ -55,7 +55,7 @@ public class Car {
     }
 
     public void setYear(int year) {
-        this.year = year;
+        this.year = year > 0 ? year : 2000;
     }
 
     public String getCountry() {
@@ -63,7 +63,7 @@ public class Car {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = country == null || country.isEmpty() ? "default" : country;
     }
 
     @Override
